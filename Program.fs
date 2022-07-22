@@ -25,7 +25,10 @@ type AccessToken = { token : string }
 
 
 let readToken file =
-    File.ReadAllText file
+    // Hacky way of dealing with terminating newline
+    // that shouldn't be there
+    File.ReadAllLines file
+    |> Array.head
 
 // Not used, but example of how to deserialize Json into F# types
 let getInstAccessToken token =
@@ -36,7 +39,7 @@ let getInstAccessToken token =
     }
     |> Request.send
     |> Response.deserializeJson<AccessToken>
-    
+
 
 let sendQuery token =
     let query = http {
@@ -67,4 +70,3 @@ let main args =
             |> printfn "%s"
             0
         | _ -> printfn "Yeah, don't do that m'kay"; 1
-    
