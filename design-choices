@@ -1,0 +1,86 @@
+name: Mega assignment
+passing-points: 42
+show-points: false
+onlineTA: https://
+command: /usr/bin/fsharp
+[code]
+arbitrary code execution????
+
+*tasks*
+
+[title]
+sometitle
+[points]
+100
+[guidelines]
+Guidelines are merely for the person grading and will not be included in the feedback documents.
+Notice that we can do as many comments as we want and can place arbitrary code
+       let list = [1,2,3]
+the list should not be considered a delimiter, for good measure only the properties:
+    - [title]
+    - [points]
+    - [guidelines]
+    - [feedback]
+will be considered and the result should look something like:
+
+#sometitle
+points: 100/100 (if show-points is true)
+
+the stuff from the feedback properties....................................................
+It could be al sorts of stuff.
+For instance you could tell students about monads and expression computations.
+We should not include any particular extra comments as these are already there in terms of the guidelines property.
+
+[feedback]
+the stuff from the feedback properties....................................................
+It could be al sorts of stuff.
+For instance you could tell students about monads and expression computations.
+[.title]
+this is an idea for a subtask:
+[.points]
+50
+[guidelines]
+i imagine that subtask should have their own points so it would look something like:
+
+#sometitle
+points 100/100
+
+the stuff from the feedback properties....................................................
+It could be al sorts of stuff.
+For instance you could tell students about monads and expression computations.
+
+    ##this is an idea for a subtask
+    points 50/50
+    i imagine a check that subtask will never give more points than their parents.
+    also if we allow for arbitrary nesting (which would be cool) should they just all start with a single prefix .
+    or should we include a . for each level of nesting?
+    for instance [...title] vs [.title]
+    i also imagine that we would go with fixed order parsing where [guidelines] are optional as permutation parsing
+    seems kinda tricky.
+
+
+notes for queiries:
+{
+  course(id: 56804) {
+    id
+    assignmentsConnection {
+      nodes {
+        _id
+        createdAt
+        name
+        submissionsConnection {
+          nodes {
+            attachments {
+              displayName
+            }
+          }
+        }
+      }
+    }
+    _id
+  }
+  assignment(id: 155003) {
+    createdAt
+    id
+  }
+}
